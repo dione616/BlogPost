@@ -1,12 +1,6 @@
 import React, { Component } from "react"
-import styled from "styled-components"
 import Head from "next/head"
 import Header from "./Header"
-
-const Section = styled.section`
-  color: white;
-  padding: 30px;
-`
 
 const MainLayout = (props) => (
   <>
