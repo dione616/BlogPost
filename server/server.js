@@ -23,6 +23,15 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
+    server.get("/posts/new", (req, res) => {
+      const actualPage = "/posts"
+
+      const queryParams = { postId: req.params.id }
+
+      //rendering req that we get
+      app.render(req, res, actualPage, queryParams)
+    })
+
     //tell next to handle all pages
     server.get("*", (req, res) => {
       return handle(req, res) //let next handle this req and res

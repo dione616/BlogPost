@@ -4,6 +4,8 @@ import { Formik } from "formik"
 import { useDispatch } from "react-redux"
 import { editPost } from "../../store/actions/posts_action"
 import Router from "next/router"
+import styled from "styled-components"
+import { PostStyled } from "../../components/layouts/Posts/LatestPosts"
 
 const Post = (props) => {
   let post = props.postData
@@ -25,7 +27,6 @@ const Post = (props) => {
   }
 
   const handleSubmit = (values, actions, id) => {
-    console.log(values, actions)
     dispatch(editPost(values, id)).then(() => {
       setDone(true)
       actions.setSubmitting(false)
@@ -41,12 +42,11 @@ const Post = (props) => {
     setEditable(false)
   }
 
-  console.log(props)
-
+  const heightForImage = Math.floor(Math.random() * Math.floor(50))
   return (
     <>
       <div className="pos">
-        <div className="post ">
+        <PostStyled>
           {!done ? (
             editable ? (
               <Formik
@@ -95,7 +95,9 @@ const Post = (props) => {
               </Formik>
             ) : (
               <>
-                <img src={`https://picsum.photos/700/500`} alt="post" />
+                <div className="image">
+                  <img className="image-edit" src={`https://picsum.photos/600/${400 + heightForImage}`} alt="post" />
+                </div>
                 <div className="title">
                   <p>{post.title}</p>
                 </div>
@@ -109,7 +111,7 @@ const Post = (props) => {
           )}
 
           <button onClick={editData}>Edit</button>
-        </div>
+        </PostStyled>
         <div></div>
       </div>
     </>
@@ -118,7 +120,6 @@ const Post = (props) => {
 
 Post.getInitialProps = async (props) => {
   let postData
-  console.log(props)
 
   try {
     const response = await axios.get(`https://simple-blog-api.crew.red/posts/${props.query.postId}`)

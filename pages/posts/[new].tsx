@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux"
 import Router from "next/router"
 
 const NewPost = (props) => {
-  console.log(props)
   const dispatch = useDispatch()
   const [done, setDone] = useState(false)
   const handleRules = (values) => {
