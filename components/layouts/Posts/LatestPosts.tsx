@@ -14,6 +14,7 @@ export const PostStyled = styled.div`
   background: rgba(255, 255, 255, 0.809);
   text-align: center;
   overflow: hidden;
+  font-size: 1.3rem;
   &:hover {
     background: #ffffff96;
   }
